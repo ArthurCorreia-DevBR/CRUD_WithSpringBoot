@@ -1,4 +1,4 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos;
+package com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services;
 
 import jakarta.persistence.*;
 

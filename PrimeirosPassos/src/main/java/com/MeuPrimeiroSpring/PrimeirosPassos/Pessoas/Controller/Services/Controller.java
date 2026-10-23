@@ -1,4 +1,4 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos;
+package com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
