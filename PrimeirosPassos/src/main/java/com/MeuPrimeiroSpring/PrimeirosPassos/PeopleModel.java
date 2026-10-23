@@ -8,10 +8,10 @@ public class PeopleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String nome;
-    String email;
-    int idade;
+    private long id;
+    private String nome;
+    private String email;
+    private int idade;
 
     //Contrutores
     public PeopleModel(){}
@@ -22,7 +22,7 @@ public class PeopleModel {
         this.idade = idade;
     }
 
-    //Getters
+    //Setters
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -35,7 +35,7 @@ public class PeopleModel {
         this.email=email;
     }
 
-    //Setters
+    //Getters
     public String getNome(){
         return this.nome;
     }
