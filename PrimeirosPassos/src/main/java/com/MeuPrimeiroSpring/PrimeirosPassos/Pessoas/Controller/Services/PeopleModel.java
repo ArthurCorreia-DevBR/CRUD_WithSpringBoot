@@ -1,5 +1,6 @@
 package com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services;
 
+import com.MeuPrimeiroSpring.PrimeirosPassos.Casa.HomeModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,10 @@ public class PeopleModel {
     private String email;
     private int idade;
 
+    @ManyToOne
+    @JoinColumn(name = "enderecos_id")
+    private HomeModel endereco;
+
     //Contrutores
     public PeopleModel(){}
 
@@ -20,6 +25,11 @@ public class PeopleModel {
         this.nome = nome;
         this.email = email;
         this.idade = idade;
+    }
+
+    public PeopleModel(String nome, String email, int idade, HomeModel endereco){
+        this(nome, email, idade);
+        this.endereco = endereco;
     }
 
     //Setters
@@ -35,6 +45,10 @@ public class PeopleModel {
         this.email=email;
     }
 
+    public void setEndereco(HomeModel endereco){
+        this.endereco = endereco;
+    }
+
     //Getters
     public String getNome(){
         return this.nome;
@@ -48,4 +62,7 @@ public class PeopleModel {
         return this.idade;
     }
 
+    public HomeModel getEndereco(){
+        return this.endereco;
+    }
 }
