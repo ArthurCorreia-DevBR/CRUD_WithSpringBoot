@@ -1,4 +1,4 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services;
+package com.MeuPrimeiroSpring.PrimeirosPassos.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,6 @@
 package com.MeuPrimeiroSpring.PrimeirosPassos.Repository;
 
-import com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services.PeopleModel;
+import com.MeuPrimeiroSpring.PrimeirosPassos.Entity.PeopleModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

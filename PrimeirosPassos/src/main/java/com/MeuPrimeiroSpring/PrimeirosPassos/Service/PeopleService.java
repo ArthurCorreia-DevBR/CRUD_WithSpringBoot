@@ -1,6 +1,6 @@
 package com.MeuPrimeiroSpring.PrimeirosPassos.Service;
 
-import com.MeuPrimeiroSpring.PrimeirosPassos.Pessoas.Controller.Services.PeopleModel;
+import com.MeuPrimeiroSpring.PrimeirosPassos.Entity.PeopleModel;
 import com.MeuPrimeiroSpring.PrimeirosPassos.Repository.PeopleRepository;
 import org.springframework.stereotype.Service;
 
