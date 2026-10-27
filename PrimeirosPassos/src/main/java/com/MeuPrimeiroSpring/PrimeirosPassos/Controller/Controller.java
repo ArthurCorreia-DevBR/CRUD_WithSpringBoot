@@ -20,8 +20,8 @@ public class Controller {
 
     //Buscar uma pessoa.
     //RequestParam para receber o email da requisição http.
-    @GetMapping
-    public ResponseEntity<PeopleModel> buscarPorEmail(@RequestParam String email){
+    @GetMapping("/GET/People={email}")
+    public ResponseEntity<PeopleModel> buscarPorEmail(@PathVariable String email){
         return ResponseEntity.ok(peopleService.buscarPorEmail(email));
     }
 
@@ -51,7 +51,7 @@ public class Controller {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/todos")
+    @GetMapping("GET/todos")
     public ResponseEntity<List<PeopleModel>> listarTodos(){
         return ResponseEntity.ok(peopleService.listarTodos());
     }
