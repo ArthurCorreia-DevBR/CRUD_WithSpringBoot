@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PeopleService {
 
+    //Injeção de dependencia
     private final PeopleRepository repository;
 
     public PeopleService(PeopleRepository repository) {
@@ -20,6 +21,7 @@ public class PeopleService {
 
     //Encontrar por email.
     public PeopleModel buscarPorEmail(String email){
+        //Caso não encontre um email, lança uma exceção. "OrElseThrow"
         return repository.findByEmail(email).orElseThrow(
                 () -> new RuntimeException("Email não encontrado!")
         );
@@ -38,11 +40,12 @@ public class PeopleService {
         //Caso o usuário passe um parametro ele é atualizado, caso ele não passe,
         //o parâmetro antigo se mantem. "?" True?. ":" Se não.
         PeopleModel atualizada = PeopleModel.builder()
+                .id(antigo.getId())
                 .nome(peopleModel.getNome() != null ?
                         peopleModel.getNome() : antigo.getNome())
                 .email(peopleModel.getEmail() != null ?
                         peopleModel.getEmail() : antigo.getEmail())
-                .idade(peopleModel.getIdade() != antigo.getIdade()  ?
+                .idade(peopleModel.getIdade() != null ?
                         peopleModel.getIdade() : antigo.getIdade())
                 .build();
 

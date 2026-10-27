@@ -14,12 +14,12 @@ public class PeopleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nome;
 
     @Column(name = "Email", unique = true)
     private String email;
 
     @Column(name = "Idade")
-    private int idade;
+    private Integer idade;
 }
