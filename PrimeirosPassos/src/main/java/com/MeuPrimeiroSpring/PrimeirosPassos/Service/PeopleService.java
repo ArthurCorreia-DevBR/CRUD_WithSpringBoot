@@ -30,5 +30,23 @@ public class PeopleService {
         repository.deleteByEmail(email);
     }
 
+    //Atualizar usuário.
+    public void atualizarPorId(Long id, PeopleModel peopleModel){
+        //Inicializando uma variavel com os dados já inseridos na tabela.
+        PeopleModel antigo = repository.findById(id).orElseThrow(()
+                -> new RuntimeException("Usuário não encontrado!"));
+        //Caso o usuário passe um parametro ele é atualizado, caso ele não passe,
+        //o parâmetro antigo se mantem. "?" True?. ":" Se não.
+        PeopleModel atualizada = PeopleModel.builder()
+                .nome(peopleModel.getNome() != null ?
+                        peopleModel.getNome() : antigo.getNome())
+                .email(peopleModel.getEmail() != null ?
+                        peopleModel.getEmail() : antigo.getEmail())
+                .idade(peopleModel.getIdade() != antigo.getIdade()  ?
+                        peopleModel.getIdade() : antigo.getIdade())
+                .build();
+
+            repository.saveAndFlush(atualizada);
+    }
 
 }
