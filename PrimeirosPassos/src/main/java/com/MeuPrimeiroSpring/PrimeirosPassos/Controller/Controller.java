@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/People")
 @RequiredArgsConstructor
@@ -47,5 +49,10 @@ public class Controller {
                                                @RequestBody PeopleModel newdata){
         peopleService.atualizarPorId(id, newdata);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/todos")
+    public ResponseEntity<List<PeopleModel>> listarTodos(){
+        return ResponseEntity.ok(peopleService.listarTodos());
     }
 }

@@ -4,6 +4,8 @@ import com.MeuPrimeiroSpring.PrimeirosPassos.Entity.PeopleModel;
 import com.MeuPrimeiroSpring.PrimeirosPassos.Repository.PeopleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PeopleService {
 
@@ -52,4 +54,8 @@ public class PeopleService {
             repository.saveAndFlush(atualizada);
     }
 
+    //Listar todos
+    public List<PeopleModel> listarTodos(){
+        return repository.findAll();
+    }
 }
