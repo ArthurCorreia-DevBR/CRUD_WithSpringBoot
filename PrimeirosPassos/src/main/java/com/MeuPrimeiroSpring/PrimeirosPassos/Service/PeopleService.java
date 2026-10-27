@@ -17,4 +17,18 @@ public class PeopleService {
     public void savePeople(PeopleModel peopleModel){
         repository.saveAndFlush(peopleModel);
     }
+
+    //Encontrar por email.
+    public PeopleModel buscarPorEmail(String email){
+        return repository.findByEmail(email).orElseThrow(
+                () -> new RuntimeException("Email não encontrado!")
+        );
+    }
+
+    //Deletar por email.
+    public void deletarPorEmail(String email){
+        repository.deleteByEmail(email);
+    }
+
+
 }
