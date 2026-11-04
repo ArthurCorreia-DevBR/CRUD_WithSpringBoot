@@ -15,4 +15,5 @@ public interface PeopleRepository extends JpaRepository<PeopleModel, Long> {
     @Transactional
     void deleteByEmail(String email);
 
+    public boolean existsByEmail(String email);
 }

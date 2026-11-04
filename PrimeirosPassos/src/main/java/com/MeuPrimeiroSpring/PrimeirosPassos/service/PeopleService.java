@@ -4,7 +4,6 @@ import com.MeuPrimeiroSpring.PrimeirosPassos.entity.PeopleModel;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.MandatoryArguments;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.UserNotFond;
 import com.MeuPrimeiroSpring.PrimeirosPassos.repository.PeopleRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +41,9 @@ public class PeopleService {
 
     //Deletar por email.
     public void deletarPorEmail(String email){
+        if (!repository.existsByEmail(email))
+            throw new UserNotFond("Email não encontrado");
+
         repository.deleteByEmail(email);
     }
 
@@ -49,7 +51,7 @@ public class PeopleService {
     public void atualizarPorId(Long id, PeopleModel peopleModel){
         //Inicializando uma variavel com os dados já inseridos na tabela.
         PeopleModel antigo = repository.findById(id).orElseThrow(()
-                -> new RuntimeException("Usuário não encontrado!"));
+                -> new UserNotFond("Usuário não encontrado!"));
         //Caso o usuário passe um parametro ele é atualizado, caso ele não passe,
         //o parâmetro antigo se mantem. "?" True?. ":" Se não.
         PeopleModel atualizada = PeopleModel.builder()
