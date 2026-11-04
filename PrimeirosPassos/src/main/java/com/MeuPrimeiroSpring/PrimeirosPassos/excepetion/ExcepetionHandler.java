@@ -1,5 +1,6 @@
 package com.MeuPrimeiroSpring.PrimeirosPassos.excepetion;
 
+import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.DoubleEmail;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.MandatoryArguments;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.UserNotFond;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,16 @@ public class ExcepetionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fullerror);
+    }
+
+    @ExceptionHandler(DoubleEmail.class)
+    public ResponseEntity doubleEmail(DoubleEmail e){
+        Map<String, Object> fullError = Map.of(
+                "status", 400,
+                "message", e.getMessage(),
+                "error", HttpStatus.BAD_REQUEST.getReasonPhrase()
+        );
+
+        return ResponseEntity.badRequest().body(fullError);
     }
 }

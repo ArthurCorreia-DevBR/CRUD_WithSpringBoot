@@ -1,6 +1,7 @@
 package com.MeuPrimeiroSpring.PrimeirosPassos.service;
 
 import com.MeuPrimeiroSpring.PrimeirosPassos.entity.PeopleModel;
+import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.DoubleEmail;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.MandatoryArguments;
 import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.UserNotFond;
 import com.MeuPrimeiroSpring.PrimeirosPassos.repository.PeopleRepository;
@@ -18,6 +19,9 @@ public class PeopleService {
 
     //Salvar pessoa.
     public void savePeople(PeopleModel peopleModel){
+
+        if (repository.existsByEmail(peopleModel.getEmail()))
+            throw new DoubleEmail("Este email já foi cadastrado");
 
         if (peopleModel.getEmail() == null || peopleModel.getEmail().isBlank())
             throw new MandatoryArguments("O campo email é obrigatório");
