@@ -1,23 +1,34 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos.Service;
+package com.MeuPrimeiroSpring.PrimeirosPassos.service;
 
-import com.MeuPrimeiroSpring.PrimeirosPassos.Entity.PeopleModel;
-import com.MeuPrimeiroSpring.PrimeirosPassos.Repository.PeopleRepository;
+import com.MeuPrimeiroSpring.PrimeirosPassos.entity.PeopleModel;
+import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.MandatoryArguments;
+import com.MeuPrimeiroSpring.PrimeirosPassos.excepetion.error.UserNotFond;
+import com.MeuPrimeiroSpring.PrimeirosPassos.repository.PeopleRepository;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PeopleService {
 
     //Injeção de dependencia
     private final PeopleRepository repository;
 
-    public PeopleService(PeopleRepository repository) {
-        this.repository = repository;
-    }
-
     //Salvar pessoa.
     public void savePeople(PeopleModel peopleModel){
+
+        if (peopleModel.getEmail() == null || peopleModel.getEmail().isBlank())
+            throw new MandatoryArguments("O campo email é obrigatório");
+
+        if (peopleModel.getNome() == null || peopleModel.getNome().isBlank())
+            throw new MandatoryArguments("O campo nome é obrigatório");
+
+        if (peopleModel.getIdade() < 0)
+            throw new MandatoryArguments("A idade deve ser maior ou igual a zero");
+
         repository.saveAndFlush(peopleModel);
     }
 
@@ -25,7 +36,7 @@ public class PeopleService {
     public PeopleModel buscarPorEmail(String email){
         //Caso não encontre um email, lança uma exceção. "OrElseThrow"
         return repository.findByEmail(email).orElseThrow(
-                () -> new RuntimeException("Email não encontrado!")
+                () -> new UserNotFond ("Email não encontrado!")
         );
     }
 

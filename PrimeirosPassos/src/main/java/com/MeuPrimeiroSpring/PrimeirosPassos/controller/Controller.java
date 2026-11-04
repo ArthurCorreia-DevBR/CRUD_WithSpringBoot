@@ -1,7 +1,7 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos.Controller;
+package com.MeuPrimeiroSpring.PrimeirosPassos.controller;
 
-import com.MeuPrimeiroSpring.PrimeirosPassos.Entity.PeopleModel;
-import com.MeuPrimeiroSpring.PrimeirosPassos.Service.PeopleService;
+import com.MeuPrimeiroSpring.PrimeirosPassos.entity.PeopleModel;
+import com.MeuPrimeiroSpring.PrimeirosPassos.service.PeopleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

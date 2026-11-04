@@ -1,4 +1,4 @@
-package com.MeuPrimeiroSpring.PrimeirosPassos.Entity;
+package com.MeuPrimeiroSpring.PrimeirosPassos.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
