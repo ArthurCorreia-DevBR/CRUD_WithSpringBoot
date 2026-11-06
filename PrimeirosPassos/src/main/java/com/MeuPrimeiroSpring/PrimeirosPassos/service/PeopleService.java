@@ -29,8 +29,9 @@ public class PeopleService {
         if (peopleModel.getNome() == null || peopleModel.getNome().isBlank())
             throw new MandatoryArguments("O campo nome é obrigatório");
 
-        if (peopleModel.getIdade() < 0)
-            throw new MandatoryArguments("A idade deve ser maior ou igual a zero");
+        if (peopleModel.getIdade() != null)
+            if (peopleModel.getIdade() < 0)
+                throw new MandatoryArguments("A idade deve ser maior ou igual a zero");
 
         repository.saveAndFlush(peopleModel);
     }
